@@ -1,6 +1,9 @@
 package com.oficinaultracar.entites;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name= "tb_cliente")
@@ -9,15 +12,23 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String cliente;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Carro> carros;
+
+    private String nome;
     private String cpf;
     private String email;
     private String telefone;
     private String endereco;
 
-    public Cliente(Long id, String cliente, String cpf, String email, String telefone, String endereco) {
+    public Cliente() {}
+
+    public Cliente(Long id, List<Carro> carros, String nome, String cpf, String email, String telefone, String endereco) {
         this.id = id;
-        this.cliente = cliente;
+        this.carros = carros;
+        this.nome = nome;
         this.cpf = cpf;
         this.email = email;
         this.telefone = telefone;
@@ -32,12 +43,20 @@ public class Cliente {
         this.id = id;
     }
 
-    public String getCliente() {
-        return cliente;
+    public List<Carro> getCarros() {
+        return carros;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setCarros(List<Carro> carros) {
+        this.carros = carros;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public String getCpf() {

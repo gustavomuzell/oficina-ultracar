@@ -1,7 +1,8 @@
 package com.oficinaultracar.controllers;
 
-import com.oficinaultracar.Repositories.ClienteRepository;
+
 import com.oficinaultracar.entites.Cliente;
+import com.oficinaultracar.Repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,20 +20,17 @@ public class ClienteController {
 
     @GetMapping
     public List<Cliente> findAll() {
-        List<Cliente> result = repository.findAll();
-        return result;
+        return repository.findAll();
     }
 
     @PostMapping
     public Cliente insert(@RequestBody Cliente cliente) {
-        Cliente result = repository.save(cliente);
-        return result;
+        return repository.save(cliente);
     }
 
     @GetMapping(value = "/{id}")
     public Cliente findById(@PathVariable Long id) {
-        Cliente result = repository.findById(id).get();
-        return result;
+        return repository.findById(id).get();
     }
 
     @PutMapping(value = "/{id}")
@@ -41,7 +39,7 @@ public class ClienteController {
 
         if (existingClienteOptional.isPresent()) {
             Cliente existingCliente = existingClienteOptional.get();
-            existingCliente.setCliente(cliente.getCliente());
+            existingCliente.setNome(cliente.getNome());
             existingCliente.setEmail(cliente.getEmail());
             existingCliente.setTelefone(cliente.getTelefone());
 
@@ -49,6 +47,7 @@ public class ClienteController {
 
             return Optional.of(updatedCliente);
         }
+
         return existingClienteOptional;
     }
 

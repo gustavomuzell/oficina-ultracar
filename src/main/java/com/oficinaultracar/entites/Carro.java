@@ -9,18 +9,27 @@ public class Carro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
+
     private String veiculo;
     private String placa;
     private String cor;
     private String ano;
     private String acessorio;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    public Carro() {}
 
-    public Carro(){
-
+    public Carro(Long id, String veiculo, String placa, String cor, String ano, String acessorio, Cliente cliente) {
+        this.id = id;
+        this.veiculo = veiculo;
+        this.placa = placa;
+        this.cor = cor;
+        this.ano = ano;
+        this.acessorio = acessorio;
+        this.cliente = cliente;
     }
 
     public Long getId() {
@@ -71,4 +80,11 @@ public class Carro {
         this.acessorio = acessorio;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 }
