@@ -5,8 +5,17 @@ Esta aplicação foi criada para realizar o desafio proposto pela Ultracar funci
 - Leitura, cadastro, atualização e deleção de clientes;
 - Leitura, cadastro, atualização e deleção de carros;
 - Leitura, cadastro, atualização e deleção de checklist de avarias;
-- abertura de ordem de serviço
-- vizualização e impressão da ordem de serviço
+- Abertura de ordem de serviço
+- Vizualização e impressão da ordem de serviço
+
+##  Estratégia do desafio
+- Como ideia inicial, foi definido que seria necessário criar um CRUD de clientes para possibilitar a inserção de novos clientes e a busca de clientes já inseridos no banco de dados.
+
+- Após isso, seria necessário criar o CRUD do carro para listar ou inserir carros no perfil do cliente, ou adicionar um novo carro, se necessário
+- A criação da tela inicial para o cadastro de clientes e seleção do veículo desejado.
+- Após a seleção do veículo desejado, o próximo passo seria a criação do CRUD para o checklist do carro (avarias, sujo, amassado). Além disso, seria necessário criar a segunda tela com checkboxes para marcar se houver alguma avaria, entre outros detalhes
+- Após clicar no botão 'Próximo', a última tela exibiria um botão para gerar um relatório que representaria a ordem de serviço, possibilitando, se necessário, a impressão da OS. O relatório incluiria os dados do cliente, do carro e qualquer observação verificada no checklist, para a aprovação do cliente.
+
 
 ##  Tecnologias
 - Java [11]
@@ -24,7 +33,7 @@ Esta aplicação foi criada para realizar o desafio proposto pela Ultracar funci
 
 
 ##  Lógica
-Para realizar uma requisição de uma abertura de Ordem de servicço, é necessário atender primeiramente os seguintes requisitos:
+-Para realizar uma requisição de uma abertura de Ordem de servicço, é necessário atender primeiramente os seguintes requisitos:
 - Deve ser enviado id do cliente .
 - O cliente deve estar cadastrado no sistema.
 - Ter ao menos uma carro cadastrado e ativo no sistema.
