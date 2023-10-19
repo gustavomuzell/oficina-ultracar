@@ -14,6 +14,10 @@ public class Carro {
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 
+    @ManyToOne
+    @JoinColumn(name = "checklist_id")
+    private Checklist checklist;
+
     private String veiculo;
     private String placa;
     private String cor;
